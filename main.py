@@ -11,7 +11,7 @@ with sync_playwright() as p:
     html = page.content()
     html = re.sub('<script[^>]*>(?:.*?)<\/script>', '', html)
 
-    path = 'fb_login.html'
+    path = 'login.html'
     f = open(path, 'w')
     f.write(html)
     f.close()
@@ -24,7 +24,7 @@ with sync_playwright() as p:
     html = page.content()
     html = re.sub('<script[^>]*>(?:.*?)<\/script>', '', html)
 
-    path = 'fb_login_mobile.html'
+    path = 'login_mobile.html'
     f = open(path, 'w')
     f.write(html)
     f.close()
