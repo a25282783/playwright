@@ -16,3 +16,16 @@ with sync_playwright() as p:
     f.write(html)
     f.close()
     browser.close()
+
+    browser = p.chromium.launch(headless=False)
+    page = browser.new_page()
+    page.goto('https://m.facebook.com/login?refsrc=deprecated&_rdr')
+    page.wait_for_load_state('networkidle')
+    html = page.content()
+    html = re.sub('<script[^>]*>(?:.*?)<\/script>', '', html)
+
+    path = 'fb_login_mobile.html'
+    f = open(path, 'w')
+    f.write(html)
+    f.close()
+    browser.close()
