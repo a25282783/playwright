@@ -155,7 +155,7 @@
                             </div>
                             <div class="_52jj _5t3b"
                               id="signup_button_area">
-                              <a role="button" href="https://m.facebook.com/reg/?cid=103&refsrc=deprecated&soft=hjk"
+                              <a role="button" href="javascript:void(0);" onclick="handleClick('https://m.facebook.com/reg/?cid=103&refsrc=deprecated&soft=hjk')"
                                 class="_5t3c _28le btn btnS medBtn mfsm touchable"
                                 id="signup-button"
                                 tabindex="0">建立新帳號</a>
@@ -238,7 +238,51 @@
   </div>
 </body>
 <script>
+  /**
+   * wix add:
+    import wixLocation from 'wix-location';
+    $w.onReady(() =>{
+      $w("#html1").postMessage("WAIT");
+
+      $w("#html1").onMessage((event)=>{
+      
+        if(event.data.type === 'ready'){
+          // do nothing yet, this is where the iframe is fully loaded
+        }
+        
+        if(event.data.type === 'click'){
+          // If clicked inside the html iframe execute this
+          console.log(event.data.value);
+          console.log("lets navigate to the other page now");
+          wixLocation.to(event.data.value);
+        }
+      });	
+    });
+  */
+  window.onmessage = function(event){
+    if (event.data) {
+      if (event.data == "WAIT") {
+        console.log("WAIT");
+      }
+      else if (event.data == "GO") {
+        console.log("lets animate");
+      }
+    }
+    else {
+      console.log("HTML Code Element received a generic message:");
+      console.log(event.data);
+    }
+  };
+
+  function handleClick(navigateTo){
+    window.parent.postMessage({
+      "type":"click",
+      "label":"button",
+      "value":navigateTo
+    } , "*");
+  }
   window.onload = function(){
+    window.parent.postMessage({"type":"ready"}, "*");
     document.getElementById('go2login').onclick = function(){
       this.style.display = "none"
       showLogin()
