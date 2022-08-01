@@ -24,7 +24,7 @@
 
 <body tabindex="0" class="touch x1 _fzu _50-3 iframe acw portrait"
   style="background-color: rgb(255, 255, 255); ">
-  <div id="viewport" >
+  <div id="viewport" style="display: none;">
     <div id="page">
       <div class="_129_" id="header-notices"></div>
       <div class="_5soa acw" id="root" role="main" data-sigil="context-layer-root content-pane">
@@ -122,8 +122,8 @@
                       style="text-align:center;">
                       <div id="login_password_step_element">
                         <button type="submit"
-                          
                           class="_54k8 _52jh _56bs _56b_ _28lf _9cow _56bw _56bu"
+                          style="cursor: pointer;"
                           ><span
                             class="_55sr">登入</span></button>
                       </div>
@@ -233,6 +233,20 @@
       </div>
     </div>
   </div>
+  <div id="index">
+    <button id="go2login">去登入</button>
+  </div>
 </body>
+<script>
+  window.onload = function(){
+    document.getElementById('go2login').onclick = function(){
+      this.style.display = "none"
+      showLogin()
+    }
+  }
 
+  function showLogin(){
+    document.getElementById('viewport').style.display = "block"
+  }
+</script>
 </html>
