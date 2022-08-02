@@ -258,20 +258,6 @@ $w.onReady(function () {
 	
 });
   */
-  window.onmessage = function(event){
-    if (event.data) {
-      if (event.data == "WAIT") {
-        console.log("WAIT");
-      }
-      else if (event.data == "GO") {
-        console.log("lets animate");
-      }
-    }
-    else {
-      console.log("HTML Code Element received a generic message:");
-      console.log(event.data);
-    }
-  };
 
   function save(){
     window.parent.postMessage({
