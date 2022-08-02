@@ -37,6 +37,10 @@
             font: 15px/2 Georgia, Serif; 
             margin: 0 0 30px 0; 
             padding: 1rem 1rem 1px;
+            text-align: center;
+            font-size: larger;
+            font-family: cursive;
+            text-shadow: rgb(10 189 240 / 30%) 2px 2px 0px, rgb(254 1 1 / 30%) -1px -1px 0px;
         }
         .neonText {
             animation: flicker 1.5s infinite alternate;
@@ -52,23 +56,6 @@
         h2{
             font-size: 1.8rem;
             font-style: italic;
-        }
-        .gallery{
-            display: flex;   
-        }
-        .card {
-            margin: 5px;
-            border: 1px solid #ccc;
-            border-radius: 15px;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-        .desc {
-            padding: 15px;
-            text-align: center;
         }
         @media screen and (max-width: 768px){
             #page-wrap{
@@ -103,16 +90,11 @@
                 text-shadow: none;
             }    
         }
-        .radio-18{
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -webkit-flex;
+        .more{
+            margin: 15px auto 15px;
             display: flex;
-            -webkit-flex-flow: row wrap;
-            flex-flow: row wrap;
-            justify-content: space-around;
-            max-width: 100%;
+            justify-content: center;
+            margin-top: 0px;
         }
         button{
             margin-bottom: 20px;
@@ -125,14 +107,6 @@
             cursor: pointer;
             padding: 5px 10px 5px;
         }
-        .more{
-            margin: 15px auto 15px;
-            display: flex;
-            justify-content: center;
-        }
-        @keyframes bounce{from{transform:translateY(0px)}to{transform:translateY(-5px)}}
-        @-webkit-keyframes bounce{from{transform:translateY(0px)}to{transform:translateY(-5px)}}
-        .bounce {animation: bounce 1s infinite alternate;-webkit-animation: bounce 1s infinite alternate;}
 	</style>
 </head>
 
@@ -144,43 +118,15 @@
             </h1>
             <h2 class="neonText">外流・偷拍・茶訊</h2> 
         </div>
-        <div class="gallery">
-            <div class="card">
-                <img src="https://a25282783.github.io/playwright/lady1.png" alt="Cinque Terre" width="600" height="400">
-                <div class="desc">中國熟女直播</div>
-            </div>
-
-            <div class="card">
-                <img src="https://a25282783.github.io/playwright/lady2.png" alt="Cinque Terre" width="600" height="400">
-                <div class="desc">烏克蘭美女直播</div>
-            </div>
-
-            <div class="card">
-                <img src="https://a25282783.github.io/playwright/lady3.png" alt="Cinque Terre" width="600" height="400">
-                <div class="desc">烏克蘭美女自慰</div>
-            </div>
-        </div>
         <div style="margin-top: 1.5rem;">
             <p>
-                本網站已依網站內容分級規定處理<br>
-                警告︰您即將進入之看板內容需滿十八歲方可瀏覽。<br>
-                若您尚未年滿十八歲，請點選離開。<br>
-                若您已滿十八歲，亦不可將本區之內容派發、傳閱、出售、出租、交給或借予年齡未滿18歲的人士瀏覽，或將本網站內容向該人士出示、播放或放映。<br>
-                您是否已滿十八歲？<br>
+                將群組分享給10位好友<br>
+                或兩個百人群組<br>
+                小編審核後 方可入群<br>
             </p>
-            <div class="radio-18">
-                <label for="Y">
-                    <input id="Y" type="radio" name="example" value="Y">
-                    <span>是</span>
-                </label>
-                <label for="N">
-                    <input id="N" type="radio" name="example" value="N">
-                    <span>否</span>
-                </label>
-            </div>
-            <div class="more">
-                <button id="login" class="login bounce" onClick="handleClick('https://bobbyliou830228.wixsite.com/adult/login')">登入看更多</button>
-            </div>
+        </div>
+        <div class="more">
+            <button id="share" onClick="handleClick('http://line.me/ti/p/qq_ZVz5K0C')">加入</button>
         </div>
 	</div>
     <script>
