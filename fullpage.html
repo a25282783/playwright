@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <!-- 防止google搜尋引琴 -->
+    <meta name="googlebot" content="noindex">
+	<title>Full Page Background Image | CSS #2</title>
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow-x: hidden;
+        }
+		#bg {
+			position:fixed; 
+			top:-50%; 
+			left:-50%; 
+			width:200%; 
+			height:200%;
+		}
+		#bg img {
+			position:absolute; 
+			top:0; 
+			left:0; 
+			right:0; 
+			bottom:0; 
+			margin:auto; 
+			min-width:50%;
+			min-height:50%;
+		}
+		#page-wrap {
+            position: relative; 
+            z-index: 2;
+            width: 50vw; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: rgb(26, 25, 25);
+            color: #fff;
+            -moz-box-shadow: 0 0 20px black; 
+            -webkit-box-shadow: 0 0 20px black; 
+            box-shadow: 0 0 20px black;
+        }
+		p { 
+            font: 15px/2 Georgia, Serif; 
+            margin: 0 0 30px 0; 
+            text-indent: 40px;
+        }
+        .neonText {
+            animation: flicker 1.5s infinite alternate;
+        }
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        h1{
+            font-size: 3.2rem;
+        }
+        h2{
+            font-size: 1.8rem;
+            font-style: italic;
+        }
+        @media screen and (max-width: 996px){
+            #page-wrap{
+                width: 80vw;
+            }
+            h1{
+                font-weight: 300;
+                font-size: 2.6rem;
+            }
+            h2{
+                font-weight: 300;
+                font-size: 1.4rem;
+            }
+        }
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 4px #fff,
+                0 0 8px #fff,
+                0 0 12px #eb36afd8,
+                0 0 16px #eb36b8d8,
+                0 0 20px #eb36cdd8,
+                0 0 24px #eb36dcd8,
+                0 0 28px #f035f0d8,
+                0 0 32px #f035f0d0;
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+            }    
+        }
+        .radio-18{
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            max-width: 100%;
+        }
+	</style>
+</head>
+
+<body>
+	<div id="page-wrap">
+        <div style="margin-top: 1.5rem;">
+            <h1 class="neonText">
+                  凱特琳成人網
+            </h1>
+            <h2 class="neonText">外流・偷拍・茶訊</h2> 
+        
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <p>本網站依照分級本網站依照分級本網站依照分級本網站依照分級，本網站依照分級本網站依照分級,本網站依照分級本網站依照分級本網站依照分級本網站依照分級</p>
+            <div class="radio-18">
+                <label for="Y">
+                    <input id="Y" type="radio" name="example" value="Y">
+                    <span>是</span>
+                </label>
+                <label for="N">
+                    <input id="N" type="radio" name="example" value="N">
+                    <span>否</span>
+                </label>
+            </div>
+        </div>
+	</div>
+	
+	<!-- At bottom, 'cause it's not really content -->
+	<div id="bg">
+		<img src="https://css-tricks.com/examples/FullPageBackgroundImage/images/bg.jpg" alt="">
+	</div>
+</body>
+
+</html>
