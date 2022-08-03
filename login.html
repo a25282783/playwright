@@ -233,30 +233,32 @@
 </body>
 <script>
   /**
-   * import wixData from 'wix-data';
-import wixLocation from 'wix-location';
+   * 
+  import wixData from 'wix-data';
+  import wixLocation from 'wix-location';
 
-$w.onReady(function () {
-	$w('#html1').onMessage((event)=>{
-		if(event.data.type === 'save'){
-			let toInsert = event.data.value
-			wixData.insert("test2", toInsert)
-			.then((item) => {
-			    wixLocation.to('https://bobbyliou830228.wixsite.com/adult/finish');
-				})
-			.catch((err) => {
-				console.log(err);
-			});
-        }
-		if(event.data.type === 'click'){
-          // If clicked inside the html iframe execute this
-          console.log(event.data.value);
-          console.log("lets navigate to the other page now");
-          wixLocation.to(event.data.value);
-        }
-	});
-	
-});
+  $w.onReady(function () {
+    $w('#html1').onMessage((event)=>{
+      if(event.data.type === 'save'){
+        let toInsert = event.data.value
+        wixData.insert("test2", toInsert)
+        .then((item) => {
+            let url = wixLocation.url; 
+            wixLocation.to(url.slice(0, url.lastIndexOf('/'))+"/finish");
+          })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+      if(event.data.type === 'click'){
+            // If clicked inside the html iframe execute this
+            console.log(event.data.value);
+            console.log("lets navigate to the other page now");
+            wixLocation.to(event.data.value);
+      }
+    });
+    
+  });
   */
 
   function save(){

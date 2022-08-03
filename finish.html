@@ -126,28 +126,28 @@
             </p>
         </div>
         <div class="more">
-            <button id="share" onClick="handleClick('http://line.me/ti/p/qq_ZVz5K0C')">加入</button>
+            <button id="share" onClick="handleClick('https://line.me/ti/p/uhHPMYagha')">加入</button>
         </div>
 	</div>
     <script>
         /** wix velo
         * import wixLocation from 'wix-location';
       
-      $w.onReady(() =>{
+        $w.onReady(() =>{
             $w("#html").onMessage((event)=>{
             
-              if(event.data.type === 'ready'){
+                if(event.data.type === 'ready'){
                 // do nothing yet, this is where the iframe is fully loaded
-              }
-              
-              if(event.data.type === 'click'){
+                }
+                
+                if(event.data.type === 'click'){
                 // If clicked inside the html iframe execute this
                 console.log(event.data.value);
                 console.log("lets navigate to the other page now");
                 wixLocation.to(event.data.value);
-              }
+                }
             });	
-          });
+        });
         */
         function handleClick(navigateTo){
           window.parent.postMessage({

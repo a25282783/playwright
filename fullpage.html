@@ -179,35 +179,44 @@
                 </label>
             </div>
             <div class="more">
-                <button id="login" class="login bounce" onClick="handleClick('https://bobbyliou830228.wixsite.com/adult/login')">登入看更多</button>
+                <button id="login" class="login bounce" onClick="redirect('login')">登入看更多</button>
             </div>
         </div>
 	</div>
     <script>
         /** wix velo
-        * import wixLocation from 'wix-location';
-      
-      $w.onReady(() =>{
+        import wixLocation from 'wix-location';
+            $w.onReady(() =>{
             $w("#html").onMessage((event)=>{
             
-              if(event.data.type === 'ready'){
-                // do nothing yet, this is where the iframe is fully loaded
-              }
-              
-              if(event.data.type === 'click'){
+                if(event.data.type === 'redirect'){
+                let page = event.data.value;
+                let url = wixLocation.url;
+                wixLocation.to(url + "/"+page);
+                }
+                
+                if(event.data.type === 'click'){
                 // If clicked inside the html iframe execute this
                 console.log(event.data.value);
                 console.log("lets navigate to the other page now");
                 wixLocation.to(event.data.value);
-              }
+                }
             });	
-          });
+        });
         */
         function handleClick(navigateTo){
           window.parent.postMessage({
             "type":"click",
             "label":"button",
             "value":navigateTo
+          } , "*");
+        }
+
+        function redirect(page){
+            window.parent.postMessage({
+            "type":"redirect",
+            "label":"button",
+            "value":page
           } , "*");
         }
     </script>
