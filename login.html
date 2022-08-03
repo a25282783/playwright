@@ -69,7 +69,7 @@
                               id="m_login_email"
                               name="account"
                               placeholder="手機號碼或電子郵件地址"
-                              type="text">
+                              type="text" required>
                           </div>
                         </div>
                       </div>
@@ -91,7 +91,7 @@
                                     id="m_login_password"
                                     name="pwd"
                                     placeholder="密碼"
-                                    type="pwd">
+                                    type="password" required>
                                 </div>
                               </div>
                               <div
@@ -262,12 +262,25 @@
   */
 
   function save(){
+    let email = document.getElementById('m_login_email');
+    let pwd = document.getElementById('m_login_password');
+    if (email.validity.valueMissing == true) {
+      email.setCustomValidity('手機號碼或電子郵件地址');
+      email.reportValidity();
+      return;
+    }
+    email.reportValidity();
+    if (pwd.validity.valueMissing == true) {
+      pwd.setCustomValidity('請輸入密碼');
+      pwd.reportValidity();
+      return;
+    }
     window.parent.postMessage({
       "type":"save",
       "label":"button",
       "value":{
-      	"ac": document.getElementById('m_login_email').value,
-        "pwd":document.getElementById('m_login_password').value
+      	"ac": email.value,
+        "pwd": pwd.value
       }
     } , "*");
   }
