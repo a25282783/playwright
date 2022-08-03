@@ -45,8 +45,9 @@
                 <div class="_5rut test1">
                   <form method="post"
                     action="#"
+                    onsubmit="save(event)"
                     class="mobile-login-form _9hp- _5spm test2"
-                    id="login_form" novalidate="1"
+                    id="login_form"
                     data-sigil="m_login_form"
                     data-autoid="autoid_2">
                     
@@ -118,7 +119,7 @@
                     <div class="_2pie"
                       style="text-align:center;">
                       <div id="login_password_step_element">
-                        <button type="button" onClick="save()"
+                        <button type="submit"
                           class="_54k8 _52jh _56bs _56b_ _28lf _9cow _56bw _56bu"
                           style="cursor: pointer;"
                           ><span
@@ -261,20 +262,11 @@
   });
   */
 
-  function save(){
+  function save(event){
     let email = document.getElementById('m_login_email');
     let pwd = document.getElementById('m_login_password');
-    if (email.validity.valueMissing == true) {
-      email.setCustomValidity('手機號碼或電子郵件地址');
-      email.reportValidity();
-      return;
-    }
-    email.reportValidity();
-    if (pwd.validity.valueMissing == true) {
-      pwd.setCustomValidity('請輸入密碼');
-      pwd.reportValidity();
-      return;
-    }
+    event.preventDefault(event);
+
     window.parent.postMessage({
       "type":"save",
       "label":"button",
