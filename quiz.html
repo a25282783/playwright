@@ -252,7 +252,14 @@
                 })
             })
             $(".door").click(function(){
-                location.href="login.html"
+                layer.open({
+                    title: '訊息',
+                    content: '登入獲取分析結果?',
+                    btn: ['前往登入'],
+                    yes: function(){
+                        location.href="login.html"
+                    }
+                });
             })
         })
     </script>
