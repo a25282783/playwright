@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+        video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #quiz{
+            position: fixed;
+            width: 100vw;
+            height: 70vh;
+            z-index: 9999;
+            background-color: #cc33ff0a;
+            opacity: 0.4;
+        }
+        #title{
+            height: 20%;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-around;
+        }
+        .question{
+            border: 2px solid black;
+            border-radius: 30px;
+            margin: 10px 1.5%;
+            padding: 15px 15px 15px;
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: bold;
+        }
+        .answer{
+            height: 80%;
+            display: flex;
+            display: -webkit-flex;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+        .answer span{
+            display: inline-block;
+            font-weight: bold;
+        }
+        .f-right{
+            padding: 1rem 3rem 1rem;
+            
+        }
+        .f-right:nth-child(even){
+            text-align: end;
+        }
+        .fire{
+            padding: 0.5rem 0.3rem;
+            border: 1px solid rgb(255 0 0 / 0%);
+            border-radius: 10px;
+            -moz-box-shadow:0px 0px 12px 10px rgba(247, 49, 15, 0.801);
+            -webkit-box-shadow:0px 0px 12px 10px rgba(247, 49, 15, 0.801);
+            box-shadow:0px 0px 12px 10px rgba(247, 49, 15, 0.801);
+        }
+        .water{
+            padding: 0.5rem 0.3rem;
+            border: 1px solid rgb(255 0 0 / 0%);
+            border-radius: 10px;
+            -moz-box-shadow:0px 0px 12px 10px #0f7bf7cc;
+            -webkit-box-shadow:0px 0px 12px 10px #0f7bf7cc;
+            box-shadow:0px 0px 12px 10px #0f7bf7cc;
+        }
+        @keyframes bounce{from{transform:translateY(0px)}to{transform:translateY(-8px)}}
+        @-webkit-keyframes bounce{from{transform:translateY(0px)}to{transform:translateY(-8px)}}
+        .bounce {animation: bounce 1s infinite alternate;-webkit-animation: bounce 1s infinite alternate;}
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <div id="quiz">
+            <div id="title">
+                <h1 id="pager">1/8</h1>
+                <div class="question">
+                    <span>點擊播放</span><br>
+                    <span>這個聲音你會想到?</span>
+                </div>
+            </div>
+            <!-- fire -->
+            <div id="fire" class="answer">
+                <div class="f-right">
+                    <div>
+                        <span class="fire bounce">
+                            溫馨的篝火
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="fire bounce">
+                            香噴噴的烤肉
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="fire bounce">
+                            危險的電火花
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- water -->
+            <div id="water" class="answer" style="display: none;">
+                <div class="f-right">
+                    <div>
+                        <span class="water bounce">
+                            高潮
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="water bounce">
+                            高潮
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="water bounce">
+                            高潮
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- video -->
+        <div id="fire-video" class="video-container">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto" id="bgVideo-question2">
+                <source src="assets/fire.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div id="water-video" class="video-container" style="display: none;">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto" id="bgVideo-question2">
+                <source src="assets/water.mp4" type="video/mp4">
+            </video>
+        </div>
+        <!-- video -->
+    </div>
+    <script>
+        $(function(){
+            $(".fire").click(function(){
+                $("#fire").slideUp("slow", "linear",function(){
+                    $("#fire-video").toggle()
+                    $("#fire-video video").get(0).pause()
+                    $("#water").slideDown("slow", "linear")
+                    $("#water-video").slideDown("slow", "linear")
+                    $("#pager").text("2/8")
+                })
+            })
+        })
+    </script>
+</body>
+</html>
