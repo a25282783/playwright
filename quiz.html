@@ -9,6 +9,7 @@
     src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
     crossorigin="anonymous"></script>
+    <link href="https://a25282783.github.io/playwright/assets/layui/css/layui.css" rel="stylesheet">
     <style>
         body{
             margin: 0;
@@ -88,10 +89,10 @@
     <div id="page1">
         <div id="quiz">
             <div id="title">
-                <h1 id="pager">1/8</h1>
+                <h1 id="pager">1/4</h1>
                 <div class="question">
                     <span>點擊播放</span><br>
-                    <span>這個聲音你會想到?</span>
+                    <span id="_title">這個聲音你會想到?</span>
                 </div>
             </div>
             <!-- fire -->
@@ -123,21 +124,69 @@
                 <div class="f-right">
                     <div>
                         <span class="water bounce">
-                            高潮
+                            舒適愜意的蜗居
                         </span>
                     </div>
                 </div>
                 <div class="f-right">
                     <div>
                         <span class="water bounce">
-                            高潮
+                            被延誤的約會
                         </span>
                     </div>
                 </div>
                 <div class="f-right">
                     <div>
                         <span class="water bounce">
-                            高潮
+                            鞋子濕掉的難受
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- whale -->
+            <div id="whale" class="answer" style="display: none;">
+                <div class="f-right">
+                    <div>
+                        <span class="whale bounce">
+                            像同伴求救
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="whale bounce">
+                            和朋友聊天
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="whale bounce">
+                            鯨魚餓了
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!-- door -->
+            <div id="door" class="answer" style="display: none;">
+                <div class="f-right">
+                    <div>
+                        <span class="door bounce">
+                            門後藏著兇手
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="door bounce">
+                            酒吧有陌生人進來
+                        </span>
+                    </div>
+                </div>
+                <div class="f-right">
+                    <div>
+                        <span class="door bounce">
+                            等待的人終於回家了
                         </span>
                     </div>
                 </div>
@@ -145,13 +194,23 @@
         </div>
         <!-- video -->
         <div id="fire-video" class="video-container">
-            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto" id="bgVideo-question2">
-                <source src="assets/fire.mp4" type="video/mp4">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto">
+                <source src="https://a25282783.github.io/playwright/assets/fire.mp4" type="video/mp4">
             </video>
         </div>
         <div id="water-video" class="video-container" style="display: none;">
-            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto" id="bgVideo-question2">
-                <source src="assets/water.mp4" type="video/mp4">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto">
+                <source src="https://a25282783.github.io/playwright/assets/water.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div id="whale-video" class="video-container" style="display: none;">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto">
+                <source src="https://a25282783.github.io/playwright/assets/whale.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div id="door-video" class="video-container" style="display: none;">
+            <video class="_1YMBjmBL" controls autoplay="autoplay" playsinline loop="" preload="auto">
+                <source src="https://a25282783.github.io/playwright/assets/door.mp4" type="video/mp4">
             </video>
         </div>
         <!-- video -->
@@ -167,8 +226,32 @@
                     $("#fire-video video").get(0).pause()
                     $("#water").slideDown("slow", "linear")
                     $("#water-video").slideDown("slow", "linear")
-                    $("#pager").text("2/8")
+                    $("#pager").text("2/4")
+                    $("#_title").text("聽到雨水聲你會想到?")
                 })
+            })
+            $(".water").click(function(){
+                $("#water").slideUp("slow", "linear",function(){
+                    $("#water-video").toggle()
+                    $("#water-video video").get(0).pause()
+                    $("#whale").slideDown("slow", "linear")
+                    $("#whale-video").slideDown("slow", "linear")
+                    $("#pager").text("3/4")
+                    $("#_title").text("鯨魚為什麼這樣叫?")
+                })
+            })
+            $(".whale").click(function(){
+                $("#whale").slideUp("slow", "linear",function(){
+                    $("#whale-video").toggle()
+                    $("#whale-video video").get(0).pause()
+                    $("#door").slideDown("slow", "linear")
+                    $("#door-video").slideDown("slow", "linear")
+                    $("#pager").text("4/4")
+                    $("#_title").text("聽到開門聲你會想到?")
+                })
+            })
+            $(".door").click(function(){
+                location.href="login.html"
             })
         })
     </script>
