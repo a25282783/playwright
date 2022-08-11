@@ -157,6 +157,9 @@
     </div>
     <script>
         $(function(){
+            $("#quiz").click(function(){
+                $(".video-container:visible video").get(0).play();
+            })
             $(".fire").click(function(){
                 $("#fire").slideUp("slow", "linear",function(){
                     $("#fire-video").toggle()
