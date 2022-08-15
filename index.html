@@ -25,7 +25,7 @@
       position: relative; 
       z-index: 2;
       width: 80vw; 
-      margin: 50px auto; 
+      margin: auto; 
       padding: 20px; 
       color: #fff;
       display: flex;
@@ -45,6 +45,26 @@
       line-height: 30px;
       text-shadow: 1px 1px 6px rgb(255 255 255 / 70%), -1px -1px 6px rgb(255 255 255 / 70%);
     }
+    button{
+      border: 0;
+      background-color: #FFFFFF;
+      color: #2d2a2c;
+      box-shadow: 0 0 10px 2px rgb(255 255 255 / 50%);
+      cursor: pointer;
+      line-height: 1;
+      font-size: 18px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      overflow: visible;
+    }
+    #footer{
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+      color: #FFFFFF;
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
@@ -52,7 +72,7 @@
     <img src="https://a25282783.github.io/playwright/assets/logo.png" alt="" style="width: 100%;">
   </div>
   <div id="app">
-    <div style="margin-top: 1.5rem;">
+    <div>
       <p id="p-1">
           色彩聲學研究室<br>
           全面了解自我<br>
@@ -66,6 +86,32 @@
           主導色<br>
       </h2>
     </div>
+    <div>
+      <button onClick="handleClick('quiz')">開始測試</button><br>
+      <span style="font-size: 12px;">829351 人已經參加了這項測試</span>
+    </div>
   </div>
+  <div id="footer">
+    <span>©2021 Rayark Inc. DELEMO II® 版權所有。</span>
+  </div>
+  <script>
+    /** wix velo
+    import wixLocation from 'wix-location';
+      $w.onReady(() =>{
+      $w("#html").onMessage((event)=>{
+        if(event.data.type === 'click'){
+        wixLocation.to(event.data.value);
+        }
+      });	
+    });
+    */
+    function handleClick(navigateTo){
+      window.parent.postMessage({
+        "type":"click",
+        "label":"button",
+        "value":navigateTo
+      } , "*");
+    }
+  </script>
 </body>
 </html>

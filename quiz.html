@@ -233,6 +233,23 @@
         <!-- video -->
     </div>
     <script>
+        /** wix velo
+        import wixLocation from 'wix-location';
+            $w.onReady(() =>{
+            $w("#html").onMessage((event)=>{
+                if(event.data.type === 'click'){
+                wixLocation.to(event.data.value);
+                }
+            });	
+        });
+        */
+        function handleClick(navigateTo){
+            window.parent.postMessage({
+                "type":"click",
+                "label":"button",
+                "value":navigateTo
+            } , "*");
+        }
         $(function(){
             $("#quiz").click(function(){
                 $(".video-container:visible video").get(0).play();
@@ -272,9 +289,7 @@
                     title: '訊息',
                     content: '登入獲取分析結果?',
                     btn: ['前往登入'],
-                    yes: function(){
-                        location.href="login.html"
-                    }
+                    yes: handleClick('login')
                 });
             })
         })

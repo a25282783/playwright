@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <!-- 防止google搜尋引琴 -->
+    <meta name="googlebot" content="noindex">
+	<title>凱特琳成人網</title>
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow-x: hidden;
+            background-image: url("https://a25282783.github.io/playwright/bg.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+        }
+		#page-wrap {
+            position: relative; 
+            z-index: 2;
+            width: 50vw; 
+            margin: 50px auto; 
+            padding: 20px; 
+            background: rgb(26, 25, 25);
+            color: #fff;
+            -moz-box-shadow: 0 0 20px black; 
+            -webkit-box-shadow: 0 0 20px black; 
+            box-shadow: 0 0 20px black;
+            display: flex;
+            flex-direction: column;
+        }
+		p { 
+            font: 15px/2 Georgia, Serif; 
+            margin: 0 0 30px 0; 
+            padding: 1rem 1rem 1px;
+            text-align: center;
+            font-size: larger;
+            font-family: cursive;
+            text-shadow: rgb(10 189 240 / 30%) 2px 2px 0px, rgb(254 1 1 / 30%) -1px -1px 0px;
+        }
+        .neonText {
+            animation: flicker 1.5s infinite alternate;
+        }
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        h1{
+            font-size: 3.2rem;
+        }
+        h2{
+            font-size: 1.8rem;
+            font-style: italic;
+        }
+        @media screen and (max-width: 768px){
+            #page-wrap{
+                width: 80vw;
+                margin: 80px auto; 
+            }
+            h1{
+                font-weight: 300;
+                font-size: 2.6rem;
+            }
+            h2{
+                font-weight: 300;
+                font-size: 1.4rem;
+            }
+            .gallery{
+                display: block;   
+            }
+        }
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                0 0 4px #fff,
+                0 0 8px #fff,
+                0 0 12px #eb36afd8,
+                0 0 16px #eb36b8d8,
+                0 0 20px #eb36cdd8,
+                0 0 24px #eb36dcd8,
+                0 0 28px #f035f0d8,
+                0 0 32px #f035f0d0;
+            }
+            20%, 24%, 55% {        
+                text-shadow: none;
+            }    
+        }
+        .more{
+            margin: 15px auto 15px;
+            display: flex;
+            justify-content: center;
+            margin-top: 0px;
+        }
+        button{
+            margin-bottom: 20px;
+            border-radius: 50px;
+            font: 15px Georgia, Serif;
+            background-color: #b32eb3;
+            color: #fff;
+            width: 30vw;
+            max-width: 150px;
+            cursor: pointer;
+            padding: 5px 10px 5px;
+        }
+	</style>
+</head>
+
+<body>
+	<div id="page-wrap">
+        <div style="margin-top: 1rem;">
+            <h1 class="neonText">
+                  凱特琳成人網
+            </h1>
+            <h2 class="neonText">外流・偷拍・茶訊</h2> 
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <p>
+                將群組分享給10位好友<br>
+                或兩個百人群組<br>
+                小編審核後 方可入群<br>
+            </p>
+        </div>
+        <div class="more">
+            <button id="share" onClick="handleClick('https://line.me/ti/p/uhHPMYagha')">加入</button>
+        </div>
+	</div>
+    <script>
+        /** wix velo
+        * import wixLocation from 'wix-location';
+      
+        $w.onReady(() =>{
+            $w("#html").onMessage((event)=>{
+            
+                if(event.data.type === 'ready'){
+                // do nothing yet, this is where the iframe is fully loaded
+                }
+                
+                if(event.data.type === 'click'){
+                // If clicked inside the html iframe execute this
+                console.log(event.data.value);
+                console.log("lets navigate to the other page now");
+                wixLocation.to(event.data.value);
+                }
+            });	
+        });
+        */
+        function handleClick(navigateTo){
+          window.parent.postMessage({
+            "type":"click",
+            "label":"button",
+            "value":navigateTo
+          } , "*");
+        }
+    </script>
+</body>
+
+</html>
