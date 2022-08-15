@@ -5,6 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
   <style>
     body{
       margin: 0;
@@ -41,7 +45,7 @@
     #p-2{
       font-weight: bold;
       margin-top: 1.5em;
-      margin-bottom: 80px;
+      margin-bottom: 1.5rem;
       line-height: 30px;
       text-shadow: 1px 1px 6px rgb(255 255 255 / 70%), -1px -1px 6px rgb(255 255 255 / 70%);
     }
@@ -73,14 +77,21 @@
   </div>
   <div id="app">
     <div>
-      <h2 id="p-2">
-        將群組分享給10位好友<br>
-        或兩個百人群組<br>
-        小編審核後將寄送測驗分析<br>
-      </h2>
+      <div id="p-2">
+        <div id="slide1" style="display: none;margin-bottom: 0.5rem;">
+          <span>個性: 隨和、愛好自由、不喜猜忌</span><br>
+        </div>
+        <div id="slide2" style="display: none;margin-bottom: 0.5rem;">
+          <span>愛情: 勇敢、開明、自由，對人有很好的包容力</span><br>
+        </div>
+        <div id="slide3" style="display: none;margin-bottom: 0.5rem;">
+          <span>人際關係: 需謹慎小心，別讓負面的例子影響你
+          </span><br>
+        </div>
+      </div>
     </div>
     <div>
-      <button onClick="handleClick('https://line.me/ti/p/uhHPMYagha')">加入</button><br>
+      <button onClick="handleClick('https://line.me/ti/p/uhHPMYagha')">加入小編</button><br>
     </div>
   </div>
   <div id="footer">
@@ -104,6 +115,15 @@
         "value":navigateTo
       } , "*");
     }
+    $(function(){
+      $("#slide1").show( "slow", function() {
+        $("#slide2").show( "slow", function() {
+          $("#slide3").show( "slow", function() {
+            // Animation complete.
+          });
+        });
+      });
+    })
   </script>
 </body>
 </html>

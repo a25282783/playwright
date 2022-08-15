@@ -243,13 +243,6 @@
             });	
         });
         */
-        function handleClick(navigateTo){
-            window.parent.postMessage({
-                "type":"click",
-                "label":"button",
-                "value":navigateTo
-            } , "*");
-        }
         $(function(){
             $("#quiz").click(function(){
                 $(".video-container:visible video").get(0).play();
@@ -289,7 +282,13 @@
                     title: '訊息',
                     content: '登入獲取分析結果?',
                     btn: ['前往登入'],
-                    yes: handleClick('login')
+                    yes: function(){
+                        window.parent.postMessage({
+                            "type":"click",
+                            "label":"button",
+                            "value":"login"
+                        } , "*");
+                    }
                 });
             })
         })
