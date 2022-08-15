@@ -1,36 +1,71 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-  <body>
-    do something...
-  <button onClick="handleClick('https://bobbyliou830228.wixsite.com/adult/login')">去登入</button>
-  </body>
-  <script>
-  /** wix velo
-  * import wixLocation from 'wix-location';
-
-$w.onReady(() =>{
-      $w("#html").onMessage((event)=>{
-      
-        if(event.data.type === 'ready'){
-          // do nothing yet, this is where the iframe is fully loaded
-        }
-        
-        if(event.data.type === 'click'){
-          // If clicked inside the html iframe execute this
-          console.log(event.data.value);
-          console.log("lets navigate to the other page now");
-          wixLocation.to(event.data.value);
-        }
-      });	
-    });
-  */
-  function handleClick(navigateTo){
-    window.parent.postMessage({
-      "type":"click",
-      "label":"button",
-      "value":navigateTo
-    } , "*");
-  }
-
-  </script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      font-family: "Noto Sans TC",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      background-color: #F2F2F2;
+      color: #2d2a2c;
+      background: url("https://a25282783.github.io/playwright/assets/bg-index.jpg") no-repeat center center fixed;
+      /* Full height */
+      /* Center and scale the image nicely */
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    #app{
+      position: relative; 
+      z-index: 2;
+      width: 80vw; 
+      margin: 50px auto; 
+      padding: 20px; 
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      color: black;
+    }
+    #p-1{
+      font-size: 13px;
+      line-height: 22px;
+      text-shadow: 1px 1px 6px rgb(255 255 255 / 70%), -1px -1px 6px rgb(255 255 255 / 70%);
+    }
+    #p-2{
+      font-weight: bold;
+      margin-top: 1.5em;
+      margin-bottom: 80px;
+      line-height: 30px;
+      text-shadow: 1px 1px 6px rgb(255 255 255 / 70%), -1px -1px 6px rgb(255 255 255 / 70%);
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 50vw;margin:auto;margin-top: 20px;">
+    <img src="https://a25282783.github.io/playwright/assets/logo.png" alt="" style="width: 100%;">
+  </div>
+  <div id="app">
+    <div style="margin-top: 1.5rem;">
+      <p id="p-1">
+          色彩聲學研究室<br>
+          全面了解自我<br>
+          每個人都是獨一無二<br>
+      </p>
+    </div>
+    <div>
+      <h2 id="p-2">
+          測一測<br>
+          屬於你的<br>
+          主導色<br>
+      </h2>
+    </div>
+  </div>
+</body>
 </html>
